@@ -24,4 +24,12 @@ public class Livraria {
     private String Autor;
     private String Genero;
     private String Editora;
+
+    public Livraria(RequestBooks requestBooks){
+        this.Livro = requestBooks.livro();
+        this.Data_lancamento = requestBooks.data_lancamento();
+        this.Autor = requestBooks.autor();
+        this.Genero = requestBooks.genero();
+        this.Editora = requestBooks.editora();
+    }
 }
