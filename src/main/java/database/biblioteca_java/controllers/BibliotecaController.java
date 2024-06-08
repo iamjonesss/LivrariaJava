@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
 @RequestMapping("/library")
 public class BibliotecaController {
@@ -26,6 +25,39 @@ public class BibliotecaController {
         System.out.println(data);
         repository.save(newLivraria);
         return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity updateBook(@PathVariable int id, @RequestBody RequestBooks data){
+        var optionalBook = repository.findById(id);
+
+        if (optionalBook.isPresent()) {
+            var existingBook = optionalBook.get();
+            existingBook.setLivro(data.livro());
+            existingBook.setData_lancamento(data.data_lancamento());
+            existingBook.setAutor(data.autor());
+            existingBook.setGenero(data.genero());
+            existingBook.setEditora(data.editora());
+            repository.save(existingBook);
+            return ResponseEntity.ok(existingBook);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteBook(@PathVariable int id){
+        var optionalBook = repository.findById(id);
+
+        if (optionalBook.isPresent()) {
+            var existingBook = optionalBook.get();
+
+            repository.delete(existingBook);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }
