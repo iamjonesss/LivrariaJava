@@ -17,7 +17,7 @@ public class Livraria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String Livro;
+    private String livro;
     private String Data_lancamento;
     private String Autor;
     private String Genero;
@@ -27,7 +27,7 @@ public class Livraria {
     private List<Emprestimo> emprestimos;
 
     public Livraria(RequestBooks requestBooks){
-        this.Livro = requestBooks.livro();
+        this.livro = requestBooks.livro();
         this.Data_lancamento = requestBooks.data_lancamento();
         this.Autor = requestBooks.autor();
         this.Genero = requestBooks.genero();

@@ -17,7 +17,7 @@ public class Clientes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_cliente;
 
-    private String NomeCliente;
+    private String nomeCliente;
     private String DataNascimento;
     private String SexoCliente;
     private String CpfCliente;
@@ -28,7 +28,7 @@ public class Clientes {
     private List<Emprestimo> emprestimos;
 
     public Clientes (RequestsClientes requestsClientes){
-        this.NomeCliente = requestsClientes.NomeCliente();
+        this.nomeCliente = requestsClientes.NomeCliente();
         this.DataNascimento = requestsClientes.DataNascimento();
         this.SexoCliente = requestsClientes.SexoCliente();
         this.CpfCliente = requestsClientes.CpfCliente();
