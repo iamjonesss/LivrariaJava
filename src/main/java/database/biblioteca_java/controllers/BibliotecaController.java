@@ -13,12 +13,14 @@ public class BibliotecaController {
     @Autowired
     private LivrariaRepository repository;
 
+    // Método para reivindicar informações no banco
     @GetMapping
     public ResponseEntity getAllBooks (){
         var allBooks = repository.findAll();
         return ResponseEntity.ok(allBooks);
     }
 
+    // Método para inserir um livro novo no banco
     @PostMapping
     public ResponseEntity registerBook(@RequestBody RequestBooks data){
         Livraria newLivraria = new Livraria(data);
@@ -27,6 +29,7 @@ public class BibliotecaController {
         return ResponseEntity.ok().build();
     }
 
+    // Método para atualizar o livro no banco
     @PutMapping("/{id}")
     public ResponseEntity updateBook(@PathVariable int id, @RequestBody RequestBooks data){
         var optionalBook = repository.findById(id);
@@ -46,6 +49,7 @@ public class BibliotecaController {
 
     }
 
+    // Método para fazer o delete do livro no banco
     @DeleteMapping("/{id}")
     public ResponseEntity deleteBook(@PathVariable int id){
         var optionalBook = repository.findById(id);
@@ -59,5 +63,4 @@ public class BibliotecaController {
             return ResponseEntity.notFound().build();
         }
     }
-
 }

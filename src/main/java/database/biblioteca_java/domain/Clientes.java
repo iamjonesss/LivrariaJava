@@ -25,4 +25,13 @@ public class Clientes {
     private String CpfCliente;
     private String EnderecoCliente;
     private String TelefoneCliente;
+
+    public Clientes (RequestsClientes requestsClientes){
+        this.NomeCliente = requestsClientes.NomeCliente();
+        this.DataNascimento = requestsClientes.DataNascimento();
+        this.SexoCliente = requestsClientes.SexoCliente();
+        this.CpfCliente = requestsClientes.CpfCliente();
+        this.EnderecoCliente = requestsClientes.EnderecoCliente();
+        this.TelefoneCliente = requestsClientes.TelefoneCliente();
+    }
 }
