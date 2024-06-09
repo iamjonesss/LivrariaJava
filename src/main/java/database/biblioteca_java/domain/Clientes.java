@@ -1,11 +1,9 @@
 package database.biblioteca_java.domain;
 
-import jakarta.persistence.Table;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Table(name="Clientes")
 @Entity(name="Clientes")
@@ -25,6 +23,9 @@ public class Clientes {
     private String CpfCliente;
     private String EnderecoCliente;
     private String TelefoneCliente;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Emprestimo> emprestimos;
 
     public Clientes (RequestsClientes requestsClientes){
         this.NomeCliente = requestsClientes.NomeCliente();

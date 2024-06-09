@@ -1,11 +1,9 @@
 package database.biblioteca_java.domain;
 
-import jakarta.persistence.Table;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Table(name="livraria")
 @Entity(name="livraria")
@@ -24,6 +22,9 @@ public class Livraria {
     private String Autor;
     private String Genero;
     private String Editora;
+
+    @OneToMany(mappedBy = "livro")
+    private List<Emprestimo> emprestimos;
 
     public Livraria(RequestBooks requestBooks){
         this.Livro = requestBooks.livro();
