@@ -47,7 +47,6 @@ public class ClientesController {
         } else{
             return ResponseEntity.notFound().build();
         }
-
     }
 
     @DeleteMapping("/{id}")
